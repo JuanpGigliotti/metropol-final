@@ -1,7 +1,7 @@
 import userService from "../services/user.service.js";
 import jwt from 'jsonwebtoken';
 
-class userController{
+class UserController{
     async register (req, res){
         const {first_name, last_name, email, age, password} = req.body;
         try{
@@ -55,4 +55,4 @@ class userController{
     }
 }
 
-export default userController;
+export default UserController;

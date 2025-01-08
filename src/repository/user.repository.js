@@ -1,6 +1,6 @@
-import userDao from '../dao/user.dao';
+import userDao from '../dao/user.dao.js';
 
-class userRepository{
+class UserRepository{
     async createUser(userData){
         return await userDao.save(userData);
     }
@@ -14,4 +14,4 @@ class userRepository{
     }
 }
 
-export default new userRepository();
+export default new UserRepository();
