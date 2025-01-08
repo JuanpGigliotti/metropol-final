@@ -8,6 +8,9 @@ import cartsRouter from './routes/carts.router.js';
 import sessionRouter from './routes/session.router.js';
 import viewsRouter from './routes/views.router.js';
 import "./database.js";
+import dotenv from 'dotenv';    
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT;
