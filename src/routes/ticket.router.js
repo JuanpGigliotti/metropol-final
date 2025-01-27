@@ -1,5 +1,5 @@
 import express from 'express';
-import TicketManager from '../managers/ticketManager.js';
+import TicketManager from '../dao/managers/ticket.manager.js';
 
 const router = express.Router();
 const ticketManager = new TicketManager();
