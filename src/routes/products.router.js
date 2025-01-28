@@ -2,11 +2,13 @@ import express from 'express';
 const router = express.Router();
 import ProductManager from '../dao/managers/product.manager.js';
 
+const productManager = new ProductManager();
+
 router.get('/', async (req, res) => {
     try{
         const { limit = 10, page = 1, sort, query} = req.query;
 
-        const products = await ProductManager.getProducts({
+        const products = await productManager.getProducts({
             limit: parseInt(limit),
             page: parseInt(page),
             sort,
@@ -38,7 +40,7 @@ router.get('/:pid', async (req, res) => {
     const id = req.params.pid;
 
     try{
-        const product = await ProductManager.getProductById(id);
+        const product = await productManager.getProductById(id);
         if(!product){
             return res.json({
                 error: "Product not found"
@@ -58,7 +60,7 @@ router.post('/', async (req, res) => {
     const newProduct = req.body;
 
     try{
-        await ProductManager.addProduct(newProduct);
+        await productManager.addProduct(newProduct);
         res.status(201).json({
             message: "Product added"
         });
@@ -75,7 +77,7 @@ router.put('/:pid', async (req, res) => {
     const productActualize = req.body;
 
     try{
-    await ProductManager.updateProduct(id, productActualize);
+    await productManager.updateProduct(id, productActualize);
     res.json({
         message: "Product updated"
     });
@@ -91,7 +93,7 @@ router.delete('/:pid', async (req, res) => {
     const id = req.params.pid;
 
     try{
-        await ProductManager.deleteProduct(id);
+        await productManager.deleteProduct(id);
         res.json({
             message: "Product deleted"
         });
